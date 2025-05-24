@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Outfit:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    /*  "Orbitron" - "Outfit"  */
+    color: #eee;
+
+}
+
+a {
+    text-decoration: none;
+    color: #eee;
+}
+
+header {
+    width: 1140px;
+    max-width: 80%;
+    margin: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+
+/*DEPOIS ADICIONAR O LINK NO HEADER*/
+header a {
+    display: none;
+    margin-right: 40px;
+}
+
+.carousel {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -50px;
+    position: relative;
+}
+
+.carousel .list .item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+
+}
+
+.carousel .list .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel .list .item .content {
+    position: absolute;
+    top: 15%;
+    width: 1140px;
+    max-width: 80%;
+    left: 40%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    color: #fff;
+    text-shadow: 0 5px 10px #0004;
+}
+
+
+.carousel .list .item .content .buttons {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    /*BUTTONS LINKEDIN E GITHUB */
+    transform: translateX(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+
+}
+
+.carousel .list .item .content button {
+
+    background-color: transparent;
+    color: #eee;
+    border: 0.1em solid #c5c5c5;
+    letter-spacing: 2px;
+    font-family: "Outfit";
+    font-weight: 400;
+    border-radius: 10px;
+    outline: none;
+    transition: .8s ease;
+    cursor: pointer;
+
+}
+
+
+.carousel .list .item .content button:nth-child(1):hover {
+    background-color: #2864AA;
+    border: none;
+}
+
+.carousel .list .item .content button:nth-child(2):hover {
+    background-color: #000;
+    border: none;
+}
+
+/*thumbnail*/
+/*OS SLIDERS */
+.thumbnail {
+    position: absolute;
+    bottom: 50px;
+    left: 60%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+    animation: showContent 1s 1s linear forwards;
+    ;
+}
+
+.thumbnail .item {
+    width: 150px;
+    height: 200px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.thumbnail .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.thumbnail .item .content {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+
+}
+
+.thumbnail .item .content .title {
+    font-weight: bold;
+    font-family: "Outfit";
+    font-size: 15px;
+}
+
+.des {
+    font-size: 12px;
+}
+
+.pay {
+    color: red;
+}
+
+.link {
+    background: #2864AA !important;
+    border: none !important;
+    animation: showContent 0.7s 1s linear forwards;
+}
+
+.git {
+    background: #000 !important;
+    border: none !important;
+}
+
+
+.arrows {
+    position: absolute;
+    top: 82%;
+    left: 56%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 100;
+}
+
+.arrows button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee4;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    transition: .5s;
+
+}
+
+.arrows button:hover {
+    background-color: #eee;
+    color: #555;
+}
+
+.carousel .list .item:nth-child(1) {
+    z-index: 1;
+}
+
+.carousel .list .item .author {
+    display: none;
+}
+
+
+/*Effect next click*/
+
+.carousel.next .list .item:nth-child(1) img {
+    width: 150px;
+    height: 200px;
+    position: absolute;
+    left: 60%;
+    bottom: 50px;
+    border-radius: 20px;
+    animation: showImage 0.7s linear forwards;
+}
+
+@keyframes showImage {
+    to {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+
+    }
+}
+
+.carousel.next .thumbnail .item:last-child(1) {
+    width: 0;
+    overflow: hidden;
+    animation: showThumbnail .7s linear 1 forwards;
+}
+
+@keyframes showThumbnail {
+    to {
+        width: 150px;
+    }
+}
+
+.carousel.next .thumbnail {
+    transform: translateX(150px);
+    animation: effectNext .5s linear 1 forwards;
+}
+
+@keyframes effectNext {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+
+/*Effect prev click*/
+
+.carousel.prev .list .item:nth-child(2) {
+    z-index: 2;
+}
+
+.carousel.prev .list .item:nth-child(2) img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: outImage .7s linear 1 forwards;
+}
+
+@keyframes outImage {
+    to {
+        width: 150px;
+        height: 200px;
+        border-radius: 20px;
+        left: 60%;
+        bottom: 50px;
+    }
+}
+
+.carousel.prev .thumbnail .item:nth-child(2) .author,
+.carousel.prev .thumbnail .item:nth-child(2) .title,
+.carousel.prev .thumbnail .item:nth-child(2) .topic {
+    animation: contentOut 1.5s linear 1 forwards;
+}
+
+@keyframes contentOut {
+    to {
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+.carousel.next .arrows button,
+.carousel.prev .arrows button {
+    pointer-events: none;
+}
+
+.time {
+    width: 0%;
+    height: 5px;
+    background-color: rgb(122, 236, 112);
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+
+}
+
+.carousel.next .time,
+.carousel.prev .time {
+    width: 100%;
+    animation: timeRunning 1s linear 1 forwards;
+}
+
+@keyframes timeRunning {
+    to {
+        width: 0;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .carousel .list .item .content {
+        padding-right: 0;
+    }
+
+    .carousel .list .item .content .title {
+        font-size: 30px;
+    }
+}
